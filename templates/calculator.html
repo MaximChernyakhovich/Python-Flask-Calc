@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% import "bootstrap/base.html" as wtf %}
+{% block title %}Calculator{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Flask Calculator</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  </head>
+  <body>
+    
+    <div class="container mt-5 text-center">
+      <h1>Calculator</h1>
+      <hr>
+      <div class="row text-center main_div">
+          <div class="col-md-6 text-left top-calc">
+              <form method="post">
+                <div class="form-group d-flex justify-content-center">
+    
+                  <div class="mr-3 expr_center">
+                      <label for="expression">Ввод:</label>
+                      <input type="text" class="form-control" name="expression" placeholder="Enter expression here">
+                  </div>
+                  {% if result %}
+                  <div class="mr-3 result_center stay_visible">
+                      <label for="result">Результат:</label>
+                      <input type="text" class="form-control" id="result" value="{{ result }}" readonly>
+                  </div>
+                  {% endif %}
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+    
+                  <div class="mt-3 d-flex justify-content-center">
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(7)">7</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(8)">8</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(9)">9</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression('+')">+</button>
+                      <button type="button" class="btn btn-secondary button_c" onclick="addToExpression('C')">C</button>
+                  </div>
+                  <div class="mt-3 d-flex justify-content-center">
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(4)">4</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(5)">5</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(6)">6</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression('-')">-</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(String.fromCharCode(8592))">&#8592;</button>
+                  </div>
+                  <div class="mt-3 d-flex justify-content-center">
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(1)">1</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(2)">2</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(3)">3</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression('*')">*</button>
+                      <button type="button" class="btn btn-secondary button">&nbsp;</button>
+                  </div>
+                  <div class="mt-3 d-flex justify-content-center">
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression('(')">(</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(0)">0</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression(')')">)</button>
+                      <button type="button" class="btn btn-secondary button" onclick="addToExpression('/')">/</button>
+                      <button type="button" class="btn btn-primary button_eq" onclick="document.forms[0].submit()">=</button>
+                  </div>
+              </form>
+          </div>
+          <div class="top-block">
+            <h2>Предыдущие результаты</h2>
+            {% if history %}
+              <ul>
+                {% for item in history %}
+                  <li><strong>{{ item.expression }}</strong> = {{ item.result }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>Нет предыдущих результатов.</p>
+            {% endif %}
+          </div>
+      </div>
+      <hr>
+    </div>
+    
+
+  <script>
+    function addToExpression(value) {
+      var expression = document.getElementsByName("expression")[0];
+      if (value === String.fromCharCode(8592)) {
+        expression.value = expression.value.slice(0, -1);
+      } else if (value === 'C') {
+        expression.value = '';
+      } else {
+        expression.value += value;
+      }
+    }
+
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+  </script>
+
+  </body>
+</html>
+
+
+{% endblock %}
