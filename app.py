@@ -11,10 +11,18 @@ bootstrap = Bootstrap(app)
 # Настройка секретного ключа для защиты форм
 app.config['SECRET_KEY'] = 'secret'
 
+# Определите путь к каталогу со статическими файлами
+app.config['STATIC_FOLDER'] = 'static'
+
 # Определение формы для ввода выражения в калькуляторе
 class CalculatorForm(FlaskForm):
     expression = StringField('Enter an expression')
     submit = SubmitField('Calculate')
+
+# Разрешите обслуживание статических файлов
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(app.config['STATIC_FOLDER'], filename)
 
 # Основной маршрут для калькулятора
 @app.route('/', methods=['GET', 'POST'])
@@ -58,4 +66,4 @@ def calculator():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=2000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
