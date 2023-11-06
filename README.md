@@ -1,44 +1,48 @@
-# Проекта
-Экспериментальный проект был создан с целью освоения навыков разработки веб-приложений с использованием фреймворка Flask. В его основе лежит легкий веб-калькулятор, разработанный с применением этого инструмента.
+# О проекте
 
+Данный проект является тестовым и был создан с целью изучения фреймворка Flask. Это простое веб-приложение-калькулятор, разработанное для практики основных принципов работы с Flask.
 
-# Технологии
+### Используемые технологии
 - [Python](https://www.python.org/)
-- [Flask](https://www.typescriptlang.org/)
-- [HTML](https://www.typescriptlang.org/)
-- [CSS](https://www.typescriptlang.org/)
-Flask==2.2.2
-Flask-Bootstrap==3.3.7.1
-Flask-WTF==1.1.1
-Werkzeug==2.2.2
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/)
+- [HTML](https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/HTML_basics)
+- [CSS](https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/CSS_basics)
 
-# Использование
 
-Клонирование репозитория:
-```sh
+## Используемые версии библиотек:
+
+- Flask==2.2.2
+- Flask-Bootstrap==3.3.7.1
+- Flask-WTF==1.1.1
+- Werkzeug==2.2.2
+
+
+## Инструкции по использованию
+### Клонирование репозитория:
+```
 $ git clone https://github.com/MaximChernyakhovich/Python-Flask-Calc.git
 ```
-
-Запуск с помощью docker:
-```sh
+### Запуск с помощью Docker:
+```
 $ cd python-flask-calc
 $ docker build -t python-flask-calc .
 $ docker run -p 5000:5000 python-flask-calc
 ```
 
-# Разработка
+## Разработка
+### Требования
+Для установки и запуска проекта необходим Python.
 
-## Требования
-Для установки и запуска проекта, необходим [Python](https://www.python.org/).
+### Установка зависимостей
+Для установки зависимостей выполните следующую команду:
 
-## Установка зависимостей
-Для установки зависимостей, выполните команду:
-```sh
+```
 $ pip install -r requirements.txt
 ```
 
-## Запуск
+### Запуск
 Чтобы запустить сервер для разработки, выполните команду:
-```sh
+
+```
 $ python app.py
 ```
