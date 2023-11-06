@@ -2,6 +2,10 @@
 
 Данный проект является тестовым и был создан с целью изучения фреймворка Flask. Это простое веб-приложение-калькулятор, разработанное для практики основных принципов работы с Flask.
 
+<p align="center">
+  <img src="https://github.com/MaximChernyakhovich/Python-Flask-Calc/blob/main/screenshots/app.png?raw=true" alt="app.png" width="600">
+</p>
+
 ### Используемые технологии
 - [Python](https://www.python.org/)
 - [Flask](https://flask.palletsprojects.com/en/3.0.x/)
